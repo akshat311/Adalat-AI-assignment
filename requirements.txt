@@ -1,0 +1,7 @@
+pandas
+requests
+PyPDF2 
+openpyxl
+yt-dlp
+git+https://github.com/MahmoudAshraf97/ctc-forced-aligner.git
+librosa
