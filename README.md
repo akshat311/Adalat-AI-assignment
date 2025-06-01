@@ -47,6 +47,8 @@ Downloads court hearing audio from YouTube (as 16kHz mono `.wav`) and transcript
 python scraper.py
 ```
 
+Use `scraper_mp.py` for scraping with multiple workers parallely. 
+
 ---
 
 ### 2. Align Transcripts with Audio
