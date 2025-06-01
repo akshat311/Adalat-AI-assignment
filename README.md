@@ -13,7 +13,6 @@ This project contains an end-to-end pipeline to fine-tune a Whisper-based Automa
 🔗 process_dataset_upload_hf.py  # Prepares dataset in CommonVoice format and uploads to HF Hub
 🔗 train.py                   # Fine-tunes the Whisper model on the aligned dataset
 🔗 requirements.txt           # Required dependencies
-🔗 final_data/                # Directory for processed training audio/text pairs
 ```
 
 ---
@@ -85,7 +84,7 @@ python train.py \
   --warmup 50 \
   --train_batchsize 16 \
   --eval_batchsize 8 \
-  --num_epochs 3 \
+  --num_epochs 5 \
   --num_steps 1000 \
   --resume_from_ckpt None \
   --output_dir train_medium_v2_16_5e-5 \
