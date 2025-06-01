@@ -3,6 +3,7 @@ import requests
 import os
 from PyPDF2 import PdfReader
 import subprocess
+from tqdm import tqdm
 
 # Define the path to the Excel file
 excel_file_path = 'SC Transcripts _ ML Assignment Speech.xlsx'
@@ -23,25 +24,13 @@ def download_audio_youtube(youtube_url, save_path):
         '--audio-quality', '0',
         '--output', save_path,
         '--postprocessor-args', "-ar 16000 -ac 1",
-        youtube_url
+        youtube_url,
     ]
     subprocess.run(command, check=True)
 
-# Function to extract text from PDF, ignoring the first page
-def extract_text_from_pdf(pdf_url):
-    response = requests.get(pdf_url)
-    with open('temp.pdf', 'wb') as f:
-        f.write(response.content)
-    reader = PdfReader('temp.pdf')
-    text = ''
-    # Start from the second page
-    for page in reader.pages[1:]:
-        text += page.extract_text() + '\n'
-    os.remove('temp.pdf')
-    return text
 
 # Iterate over each row in the Excel file
-for index, row in excel_data.iterrows():
+for index, row in tqdm(excel_data.iterrows()):
     youtube_url = row['Oral Hearing Link']
     transcript_url = row['Transcript Link']
     
@@ -50,9 +39,10 @@ for index, row in excel_data.iterrows():
     download_audio_youtube(youtube_url, audio_file_path)
     
     # Extract text from the PDF
-    transcript_text = extract_text_from_pdf(transcript_url)
+    response = requests.get(transcript_url)
+    with open(f"transcripts/transcript_{index}.pdf", "wb") as f:
+        f.write(response.content)
     
     # Save the transcript text
     with open(f"transcripts/transcript_{index}.txt", "w") as f:
         f.write(transcript_text) 
-    exit()

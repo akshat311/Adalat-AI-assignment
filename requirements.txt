@@ -5,3 +5,12 @@ openpyxl
 yt-dlp
 git+https://github.com/MahmoudAshraf97/ctc-forced-aligner.git
 librosa
+silero-vad
+hf_transfer
+tqdm
+datasets
+huggingface_hub
+evaluate
+wandb
+jiwer
+transformers[torch]
