@@ -80,14 +80,13 @@ python train.py \
   --sampling_rate 16000 \
   --num_proc 10 \
   --train_strategy epoch \
-  --learning_rate 5e-5 \
+  --learning_rate 6.25e-6 \
   --warmup 50 \
-  --train_batchsize 16 \
+  --train_batchsize 32 \
   --eval_batchsize 8 \
   --num_epochs 5 \
-  --num_steps 1000 \
   --resume_from_ckpt None \
-  --output_dir train_medium_v2_16_5e-5 \
+  --output_dir train_medium_v2 \
   --train_datasets akshat311/supreme-court-stt \
   --train_dataset_splits train \
   --train_dataset_text_columns sentence \
