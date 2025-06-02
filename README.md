@@ -86,7 +86,7 @@ python train.py \
   --eval_batchsize 8 \
   --num_epochs 5 \
   --resume_from_ckpt None \
-  --output_dir train_medium_v2 \
+  --output_dir train_medium \
   --train_datasets akshat311/supreme-court-stt \
   --train_dataset_splits train \
   --train_dataset_text_columns sentence \
@@ -97,6 +97,15 @@ python train.py \
 
 ---
 
+### 5. Upload trained model to Huggingface
+
+Pass the trained model directory, huggingface repo id and hf token to upload model.
+
+```bash
+python upload_model_to_hf.py --model-dir <> --repo-id <> --token <>
+```
+
+---
 
 ## 🧠 Example Output Format (CommonVoice-style)
 
